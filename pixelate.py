@@ -1,6 +1,6 @@
 # Credits to: https://gist.github.com/scottrogowski/c3c474a04d7c0cd8ddeb
 
-# This script will pixelate most jpg and png images
+# This script will pixelate most jpg
 # and convert the pixelated image into grayscale
 # It will both show you the result and save it
 # shown image color looks off than what it is supposed to be,
@@ -62,6 +62,13 @@ def make_one_square(img, row, col, square_h, square_w):
     # set all pixels to that average color
     for y, x in all_square_pixels(row, col, square_h, square_w):
         img[y][x] = (av_r, av_g, av_b)
+
+    print(av_r, av_g, av_b)
+    # return the average value for rgb in array
+    # a = np.asarray([av_r], [av_g], [av_b])
+
+    # saves the array as .csv file that will used in data streaming
+    # np.savetxt("rgb_values.csv", a, delimiter=",")
 
 
 def rgb2gray(rgb):
