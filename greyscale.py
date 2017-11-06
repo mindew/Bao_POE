@@ -1,10 +1,7 @@
 from PIL import Image
-import numpy as NP
+import numpy as np
 
-im = Image.open('heart_pixelated.jpg')
-width, height = im.size
+im = Image.open('heart.jpg', mode = 'r')
 
-total = 0
-for i in range(0, width):
-    for j in range(0, height):
-        total += img.getpixel((i,j))[0]
+
+Image.show(im)

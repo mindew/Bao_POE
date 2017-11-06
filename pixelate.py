@@ -63,7 +63,9 @@ def make_one_square(img, row, col, square_h, square_w):
     for y, x in all_square_pixels(row, col, square_h, square_w):
         img[y][x] = (av_r, av_g, av_b)
 
-    print(av_r, av_g, av_b)
+    # print(av_r, av_g, av_b)
+    avg_Gray = int(round(0.2989 * av_r + 0.5879 * av_g + 0.1140 * av_b))
+    print(avg_Gray)
     # return the average value for rgb in array
     # a = np.asarray([av_r], [av_g], [av_b])
 
@@ -95,6 +97,8 @@ if __name__ == "__main__":
     num_cols = int(input("How many squares from left to right? "))
     # width of the square
     square_w = float(img.shape[1]) / num_cols
+
+    # determine the row number based on the width of the square
     num_rows = int(round(img.shape[0] / square_w))
     # height of the square
     square_h = float(img.shape[0]) / num_rows
@@ -112,7 +116,7 @@ if __name__ == "__main__":
 
     # show the image
     plt.axis('off')
-    plt.imshow(gray)
+    plt.imshow(gray, cmap='gray')
     plt.show()
 
     # save the image as filename_pixelated
