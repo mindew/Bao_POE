@@ -63,9 +63,13 @@ def make_one_square(img, row, col, square_h, square_w):
     for y, x in all_square_pixels(row, col, square_h, square_w):
         img[y][x] = (av_r, av_g, av_b)
 
+<<<<<<< HEAD
     # print(av_r, av_g, av_b)
     avg_Gray = int(round(0.2989 * av_r + 0.5879 * av_g + 0.1140 * av_b))
     print(avg_Gray)
+=======
+    print(av_r, av_g, av_b)
+>>>>>>> 75f07672cdb33a891d35f026ec2e8db70e174f79
     # return the average value for rgb in array
     # a = np.asarray([av_r], [av_g], [av_b])
 
