@@ -108,9 +108,8 @@ if __name__ == "__main__":
         for col in range(num_cols):
             make_one_square(img, row, col, square_h, square_w)
 
-print(grayvalues)
 csvfile = "/home/minju/Bao_POE/Grayscalve_Vals.csv"
-foo = open(csvfile,'w')
+foo = open(csvfile, 'w')
 foo.truncate()
 foo.close()
 
