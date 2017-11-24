@@ -13,6 +13,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import PIL.Image as Image
 import scipy.misc as misc
+import csv
+
+grayvalues = []
 
 
 def load_img(filename):
@@ -62,19 +65,10 @@ def make_one_square(img, row, col, square_h, square_w):
     # set all pixels to that average color
     for y, x in all_square_pixels(row, col, square_h, square_w):
         img[y][x] = (av_r, av_g, av_b)
-
-<<<<<<< HEAD
     # print(av_r, av_g, av_b)
     avg_Gray = int(round(0.2989 * av_r + 0.5879 * av_g + 0.1140 * av_b))
     print(avg_Gray)
-=======
-    print(av_r, av_g, av_b)
->>>>>>> 75f07672cdb33a891d35f026ec2e8db70e174f79
-    # return the average value for rgb in array
-    # a = np.asarray([av_r], [av_g], [av_b])
-
-    # saves the array as .csv file that will used in data streaming
-    # np.savetxt("rgb_values.csv", a, delimiter=",")
+    grayvalues.append(avg_Gray)
 
 
 def rgb2gray(rgb):
@@ -113,6 +107,16 @@ if __name__ == "__main__":
     for row in range(num_rows):
         for col in range(num_cols):
             make_one_square(img, row, col, square_h, square_w)
+
+print(grayvalues)
+csvfile = "/home/minju/Bao_POE/Grayscalve_Vals.csv"
+foo = open(csvfile,'w')
+foo.truncate()
+foo.close()
+
+with open(csvfile, 'a') as output:
+    writer = csv.writer(output, lineterminator='\n')
+    writer.writerows([[vals] for vals in grayvalues])
 
     # convert the image into gray scale
     # if you want to use rgb image, just comment this line out
