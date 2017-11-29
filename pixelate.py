@@ -14,6 +14,8 @@ import numpy as np
 import PIL.Image as Image
 import scipy.misc as misc
 import csv
+import serial
+import time
 
 grayvalues = []
 
@@ -133,3 +135,18 @@ with open(csvfile, 'a') as output:
     print("Saving Pixelated Image")
 
 misc.imsave(filename, gray)
+port = '/dev/ttyS0'
+
+ser = serial.Serial(port, 9600, timeout=5)
+
+i = 0
+
+while (i < 25):
+    sendval = grayvalues[i]
+    ser.flush()
+    strval = str(sendval)
+    print("Grayscale value: ")
+    print(strval)
+    ser.write(strval)
+    time.sleep(6)
+    i = i + 1

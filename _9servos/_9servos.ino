@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-Servo servo1; 
+Servo servo1;
 Servo servo2;
 Servo servo3;
 Servo servo4;
@@ -20,7 +20,7 @@ int servo7pin =  8;
 int servo8pin =  9;
 int servo9pin =  10;
 
-unsigned long previousMillis = 0;        // will store last time 
+unsigned long previousMillis = 0;        // will store last time
 long time1 = 2000;           // milliseconds
 long time2 = 10000;
 
@@ -38,7 +38,7 @@ void setup(){
   servo7.attach(servo7pin);
   servo8.attach(servo8pin);
   servo9.attach(servo9pin);
-  
+
   servo1.write(0);
   servo2.write(0);
   servo3.write(0);
@@ -49,7 +49,7 @@ void setup(){
   servo8.write(0);
   servo9.write(0);
 }
- 
+
 void loop(){
   unsigned long currentMillis = millis();
   if((currentMillis - previousMillis >= time1)){
@@ -67,4 +67,3 @@ void loop(){
   }
 
 }
-
