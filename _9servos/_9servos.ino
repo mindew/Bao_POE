@@ -1,69 +1,64 @@
 #include <Servo.h>
 
-Servo servo1;
-Servo servo2;
-Servo servo3;
-Servo servo4;
-Servo servo5;
-Servo servo6;
-Servo servo7;
-Servo servo8;
-Servo servo9;
+const byte servoCount = 25;
+Servo servo[servoCount];
 
-int servo1pin =  2;
-int servo2pin =  3;
-int servo3pin =  4;
-int servo4pin =  5;
-int servo5pin =  6;
-int servo6pin =  7;
-int servo7pin =  8;
-int servo8pin =  9;
-int servo9pin =  10;
-
-unsigned long previousMillis = 0;        // will store last time
-long time1 = 2000;           // milliseconds
-long time2 = 10000;
-
-char init_positions[]={0,0,0,0,0,0,0,0,0};
-int positions[]={90,90,90,90,90,90,90,90,90};
+const int initpos = 0;
 
 void setup(){
   Serial.begin(9600);
-  servo1.attach(servo1pin);
-  servo2.attach(servo2pin);
-  servo3.attach(servo3pin);
-  servo4.attach(servo4pin);
-  servo5.attach(servo5pin);
-  servo6.attach(servo6pin);
-  servo7.attach(servo7pin);
-  servo8.attach(servo8pin);
-  servo9.attach(servo9pin);
+  Serial.println("Ready to go!");
+  
+  // attach servos
+  servo[0].attach(22);
+  servo[1].attach(23);
+  servo[2].attach(24);
+  servo[3].attach(25);
+  servo[4].attach(26);
+  servo[5].attach(27);
+  servo[6].attach(28);
+  servo[7].attach(29);
+  servo[8].attach(30);
+  servo[9].attach(31);
+  servo[10].attach(32);
+  servo[11].attach(33);
+  servo[12].attach(34);
+  servo[13].attach(35);
+  servo[14].attach(36);
+  servo[15].attach(37);
+  servo[16].attach(38);
+  servo[17].attach(39);
+  servo[18].attach(40);
+  servo[19].attach(41);
+  servo[20].attach(42);
+  servo[21].attach(43);
+  servo[22].attach(44);
+  servo[23].attach(45);
+  servo[24].attach(46);
 
-  servo1.write(0);
-  servo2.write(0);
-  servo3.write(0);
-  servo4.write(0);
-  servo5.write(0);
-  servo6.write(0);
-  servo7.write(0);
-  servo8.write(0);
-  servo9.write(0);
+  // initialize servo's position
+  for (byte servoindex = 0; servoindex < servoCount; servoindex = servoindex + 1){
+    servo[servoindex].write(initpos);
+  }
 }
 
 void loop(){
-  unsigned long currentMillis = millis();
-  if((currentMillis - previousMillis >= time1)){
-    servo1.write(30);
-    servo2.write(100);
-    servo3.write(30);
-    servo4.write(100);
-    servo5.write(180);
-    servo6.write(100);
-    servo7.write(30);
-    servo8.write(100);
-    servo9.write(30);
-
-    previousMillis = currentMillis;
-  }
-
+  int serv_pos[3];
+  byte index = 0;
+  
+  if(Serial.available() > 0){
+    int serv_pos = Serial.read();
+      Serial.println(serv_pos, DEC);
+      if (Serial.read() == '\n') 
+      {index = index + 1;
+      }
+//      if(serv_pos == 10) //ASCII for line feed
+//      {
+//       index = index + 1;
+//     }  
+     
+     servo[index].write(serv_pos);
+     
+     delay(10); // wait until things settle down
+   }
 }

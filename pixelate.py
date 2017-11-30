@@ -135,18 +135,14 @@ with open(csvfile, 'a') as output:
     print("Saving Pixelated Image")
 
 misc.imsave(filename, gray)
-port = '/dev/ttyS0'
+port = '/dev/ttyACM0'
 
 ser = serial.Serial(port, 9600, timeout=5)
 
-i = 0
-
-while (i < 25):
+for i in range(0, 24):
     sendval = grayvalues[i]
     ser.flush()
-    strval = str(sendval)
-    print("Grayscale value: ")
-    print(strval)
-    ser.write(strval)
+    print("Sending Grayscale value: ")
+    print(sendval)
+    ser.write(sendval)
     time.sleep(6)
-    i = i + 1

@@ -1,6 +1,3 @@
-// credits to: http://www.meccanismocomplesso.org/en/arduino-tutorial-serial-data-actuator/
-
-
 #include <Servo.h>
 
 Servo myservo;
