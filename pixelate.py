@@ -16,6 +16,7 @@ import scipy.misc as misc
 import csv
 import serial
 import time
+import struct
 
 grayvalues = []
 
@@ -69,7 +70,7 @@ def make_one_square(img, row, col, square_h, square_w):
         img[y][x] = (av_r, av_g, av_b)
     # print(av_r, av_g, av_b)
     avg_Gray = int(round(0.2989 * av_r + 0.5879 * av_g + 0.1140 * av_b))
-    print(avg_Gray)
+    # print(avg_Gray)
     grayvalues.append(avg_Gray)
 
 
@@ -139,10 +140,8 @@ port = '/dev/ttyACM0'
 
 ser = serial.Serial(port, 9600, timeout=5)
 
-for i in range(0, 24):
-    sendval = grayvalues[i]
-    ser.flush()
-    print("Sending Grayscale value: ")
-    print(sendval)
-    ser.write(sendval)
-    time.sleep(6)
+for i in grayvalues:
+    ser.write(chr(i).encode("latin1"))
+    print("Sending Values:")
+    print(i)
+    time.sleep(3.0)
