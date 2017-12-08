@@ -59,10 +59,9 @@
       Serial.print(", ");
       Serial.println(index);
       servo[index].write(serv_pos);
-      
       index = index + 1;
-      
       }  
+
     }
   }
 

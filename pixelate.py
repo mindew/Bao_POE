@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # load the iamge
 
     # Figure out the dimensions of each square
-    num_cols = int(input("How many squares from left to right? "))
+    num_cols = 5
     # width of the square
     square_w = float(img.shape[1]) / num_cols
 
@@ -138,10 +138,10 @@ with open(csvfile, 'a') as output:
 misc.imsave(filename, gray)
 port = '/dev/ttyACM0'
 
-ser = serial.Serial(port, 9600, timeout=5)
+ser = serial.Serial(port, 9600)
 
 for i in grayvalues:
     ser.write(chr(i).encode("latin1"))
     print("Sending Values:")
     print(i)
-    time.sleep(3.0)
+    time.sleep(1.5)
