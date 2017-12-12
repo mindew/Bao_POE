@@ -3,7 +3,7 @@
   const byte servoCount = 25;
   Servo servo[servoCount];
   
-  const int initpos = 180;
+  const int initpos = 0;
   
   void setup(){
   Serial.begin(9600);
@@ -36,7 +36,7 @@
   servo[24].attach(45);
   servo[25].attach(46);
 
-    for (byte servoindex = 1; servoindex < servoCount+1; servoindex++)
+    for (byte servoindex = 1; servoindex < servoCount; servoindex++)
   {
       servo[servoindex].write(initpos);
   }
@@ -58,7 +58,6 @@
       Serial.println(index);
       servo[index].write(serv_pos);
       index = index + 1;
-      
       }  
 
     }

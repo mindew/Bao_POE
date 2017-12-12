@@ -142,6 +142,7 @@ ser = serial.Serial(port, 9600)
 time.sleep(2)
 
 for i in grayvalues:
+
     ser.write(chr(i).encode("latin1"))
     print("Sending Values:")
     print(i)
