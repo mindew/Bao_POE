@@ -1,9 +1,9 @@
   #include <Servo.h>
   
-  const byte servoCount = 25;
+  const byte servoCount = 26;
   Servo servo[servoCount];
   
-  const int initpos = 180;
+  const int initpos = 0;
   
   void setup(){
   Serial.begin(9600);
